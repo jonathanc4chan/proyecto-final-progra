@@ -264,20 +264,29 @@ public class CafeteriaApp {
 }
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
+
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
+
 import java.sql.Statement;
 
 public class ConexionMariaDB {
+
     public static void main(String[] args) {
+
         // Configuración de la conexión
-        String url = "jdbc:mariadb://localhost:3306/tu_base_de_datos";
-        String usuario = "tu_usuario";
-        String contraseña = "tu_contraseña";
+	
+        String url = "jdbc:mariadb://localhost:3306/cafeteria";
+	
+        String usuario = "root";
+	
+        String contraseña = "2004";
 
         // Intentar establecer la conexión
-        try (Connection conexion = DriverManager.getConnection(url, usuario, contraseña)) {
+        try (Connection conexion = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cafeteria", "root", "2004")) {
             System.out.println("Conexión exitosa");
 
             // Realizar una consulta simple
