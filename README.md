@@ -301,6 +301,119 @@ public class ConexionMariaDB {
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Producto {
+    String nombre;
+    double precio;
+
+    public Producto(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+}
+
+public class AdministracionCafeteria {
+    private static List<Producto> menu = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        char opcion;
+
+        do {
+            System.out.println("1. Alta de producto");
+            System.out.println("2. Baja de producto");
+            System.out.println("3. Actualización de producto");
+            System.out.println("4. Mostrar menú");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.next().charAt(0);
+
+            switch (opcion) {
+                case '1':
+                    altaProducto();
+                    break;
+                case '2':
+                    bajaProducto();
+                    break;
+                case '3':
+                    actualizarProducto();
+                    break;
+                case '4':
+                    mostrarMenu();
+                    break;
+                case '5':
+                    System.out.println("¡Hasta luego!");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, seleccione nuevamente.");
+            }
+        } while (opcion != '5');
+    }
+
+    private static void altaProducto() {
+        System.out.print("Ingrese el nombre del producto: ");
+        String nombre = scanner.next();
+        System.out.print("Ingrese el precio del producto: ");
+        double precio = scanner.nextDouble();
+
+        Producto nuevoProducto = new Producto(nombre, precio);
+        menu.add(nuevoProducto);
+
+        System.out.println("Producto agregado con éxito.");
+    }
+
+    private static void bajaProducto() {
+        System.out.print("Ingrese el nombre del producto a dar de baja: ");
+        String nombre = scanner.next();
+
+        boolean productoEncontrado = false;
+        for (Producto producto : menu) {
+            if (producto.nombre.equalsIgnoreCase(nombre)) {
+                menu.remove(producto);
+                productoEncontrado = true;
+                System.out.println("Producto eliminado con éxito.");
+                break;
+            }
+        }
+
+        if (!productoEncontrado) {
+            System.out.println("Producto no encontrado. Verifique el nombre e intente nuevamente.");
+        }
+    }
+
+    private static void actualizarProducto() {
+        System.out.print("Ingrese el nombre del producto a actualizar: ");
+        String nombre = scanner.next();
+
+        boolean productoEncontrado = false;
+        for (Producto producto : menu) {
+            if (producto.nombre.equalsIgnoreCase(nombre)) {
+                System.out.print("Ingrese el nuevo precio del producto: ");
+                double nuevoPrecio = scanner.nextDouble();
+                producto.precio = nuevoPrecio;
+                productoEncontrado = true;
+                System.out.println("Producto actualizado con éxito.");
+                break;
+            }
+        }
+
+        if (!productoEncontrado) {
+            System.out.println("Producto no encontrado. Verifique el nombre e intente nuevamente.");
+        }
+    }
+
+    private static void mostrarMenu() {
+        System.out.println("Menú de la cafetería:");
+        for (Producto producto : menu) {
+            System.out.println("Nombre: " + producto.nombre + ", Precio: " + producto.precio);
+        }
+    }
+}
+
+
 
 CREATE TABLE Producto (cafeteria
 
