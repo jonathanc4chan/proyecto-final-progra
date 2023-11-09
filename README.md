@@ -480,3 +480,126 @@ CREATE TABLE EmpleadoDelMes (
     
     ventas INT NOT NULL
 );
+
+package prouyecto;
+
+import java.util.Scanner;
+
+public class Menu {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int opcion = 0;
+
+        do {
+            System.out.println("** Menú **");
+            System.out.println("1. Ingreso de producto");
+            System.out.println("2. Facturación");
+            System.out.println("3. Inventario");
+            System.out.println("4. Información de orden");
+            System.out.println("5. Empleado del mes");
+            System.out.println("6. Salir");
+
+            System.out.print("Ingrese una opción: ");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    ingresarProducto();
+                    break;
+                case 2:
+                    facturacion();
+                    break;
+                case 3:
+                    inventario();
+                    break;
+                case 4:
+                    informacionOrden();
+                    break;
+                case 5:
+                    empleadoDelMes();
+                    break;
+                case 6:
+                    System.out.println("¡Hasta pronto!");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        } while (opcion != 6);
+    }
+
+    private static void ingresarProducto() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese el nombre del producto: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Ingrese la cantidad del producto: ");
+        int cantidad = sc.nextInt();
+
+        System.out.print("Ingrese el precio del producto: ");
+        float precio = sc.nextFloat();
+
+        System.out.println("Producto ingresado correctamente.");
+    }
+
+    private static void facturacion() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese el NIT del cliente: ");
+        String nit = sc.nextLine();
+
+        System.out.print("Ingrese la descripción del producto: ");
+        String descripcion = sc.nextLine();
+
+        System.out.print("Ingrese la cantidad del producto: ");
+        int cantidad = sc.nextInt();
+
+        System.out.print("Ingrese el precio del producto: ");
+        float precio = sc.nextFloat();
+
+        System.out.println("Factura generada correctamente.");
+    }
+
+    private static void inventario() {
+        System.out.println("Cantidad de café: ");
+        System.out.println(100);
+
+        System.out.println("Cantidad de azúcar: ");
+        System.out.println(50);
+
+        System.out.println("Cantidad de leche: ");
+        System.out.println(20);
+    }
+
+    private static void informacionOrden() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese el código de la orden: ");
+        int codigo = sc.nextInt();
+
+        System.out.print("Ingrese la venta realizada: ");
+        float venta = sc.nextFloat();
+
+        System.out.print("Ingrese el vendedor: ");
+        String vendedor = sc.nextLine();
+
+        System.out.println("Información de orden ingresada correctamente.");
+    }
+
+    private static void empleadoDelMes() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese el nombre del empleado: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Ingrese el puesto del empleado: ");
+        String puesto = sc.nextLine();
+
+        System.out.print("Ingrese la venta del empleado: ");
+        float venta = sc.nextFloat();
+
+        System.out.println("Empleado del mes ingresado correctamente.");
+    }
+}
