@@ -1,5 +1,6 @@
 # proyecto-final-progra
 
+los patrones de diseño usados son el abstract factory y el patron  de cadena de responsabilidad
 
 package gui;
 
